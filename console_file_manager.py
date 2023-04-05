@@ -38,7 +38,7 @@ while True:
         try:
             shutil.copytree(folder_from_copy, folder_to_copy)
         except:
-           shutil.copyfile(folder_from_copy, folder_to_copy)
+            shutil.copyfile(folder_from_copy, folder_to_copy)
 
     elif choice == '4':
         print(os.listdir("."))
