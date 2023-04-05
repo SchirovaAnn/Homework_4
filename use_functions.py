@@ -36,11 +36,14 @@
 
 count = 0
 history = []
+
+
 def add_count():
     global count
     add_sum = int(input('Введите сумму пополнения счета: '))
-    count+=add_sum
+    count += add_sum
     return count
+
 
 def purchase():
     global count
@@ -50,7 +53,7 @@ def purchase():
         return count
     else:
         history.append((input('Введите название покупки: '), purchase_sum))
-        count-=purchase_sum
+        count -= purchase_sum
         return count
 
 
