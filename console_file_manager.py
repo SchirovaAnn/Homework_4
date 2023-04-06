@@ -14,7 +14,8 @@ while True:
     print('9. играть в викторину')
     print('10. мой банковский счет')
     print('11. смена рабочей директории(*необязательный пункт)')
-    print('12. выход')
+    print('12. сохранить содержимое рабочей директории в файл')
+    print('13. выход')
 
 
     choice = input('Выберите пункт меню: ')
@@ -72,6 +73,27 @@ while True:
         print(f'Новая рабочая директория: {os.getcwd()}')
 
     elif choice == '12':
+        file_list = []
+        for filename in os.listdir("."):
+            if os.path.isfile(filename):
+                file_list.append(filename)
+
+        folder_list = []
+        for folder in os.listdir("."):
+            if os.path.isdir(folder):
+                folder_list.append(folder)
+
+        with open('listdir.txt', 'w') as f:
+            f.write(f"files: {', '.join(file_list)}\n")
+            f.write(f"files: {', '.join(folder_list)}")
+
+
+
+
+
+
+
+    elif choice == '13':
         break
 
     else:
