@@ -35,13 +35,22 @@
 """
 
 count = 0
+with open('count.txt', 'w') as f:
+    f.write(str(count))
+
 history = []
 
 
 def add_count():
-    global count
+    with open('count.txt', 'r') as f:
+        count = int(f.read())
+
     add_sum = int(input('Введите сумму пополнения счета: '))
     count += add_sum
+
+    with open('count.txt', 'w') as f:
+        f.write(str(count))
+
     return count
 
 
@@ -53,6 +62,10 @@ def purchase():
         return count
     else:
         history.append((input('Введите название покупки: '), purchase_sum))
+
+        with open('purchase.txt', 'w') as f:
+            f.write(str(history))
+
         count -= purchase_sum
         return count
 
@@ -66,6 +79,8 @@ while True:
     choice = input('Выберите пункт меню: ')
     if choice == '1':
         count = add_count()
+        #with open('count.txt', 'w') as f:
+
 
     elif choice == '2':
         count = purchase()
