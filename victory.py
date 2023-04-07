@@ -26,6 +26,7 @@ while True:
     print(f'Процент неправильных ответов: {(len(answers)-sum(answers))*100/len(answers)}')
 
     con = input('Вы хотите продолжить игру (Введите Да или Нет)?')
+
     if con=='Да':
         continue
     else:

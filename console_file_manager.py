@@ -88,11 +88,6 @@ while True:
             f.write(f"files: {', '.join(folder_list)}")
 
 
-
-
-
-
-
     elif choice == '13':
         break
 
