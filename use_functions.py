@@ -41,19 +41,26 @@ with open('count.txt', 'w') as f:
 history = []
 
 
+def decorator(f):
+    def inner(*args, **kwargs):
+        print('Вы вносите изменения в счет!')
+        result = f(*args, **kwargs)
+        print('Значение счета изменилось!')
+        return result
+    return inner
+
+
+@decorator
 def add_count():
     with open('count.txt', 'r') as f:
         count = int(f.read())
-
     add_sum = int(input('Введите сумму пополнения счета: '))
     count += add_sum
-
     with open('count.txt', 'w') as f:
         f.write(str(count))
-
     return count
 
-
+@decorator
 def purchase():
     global count
     purchase_sum = int(input('Введите сумму покупки: '))
@@ -62,10 +69,8 @@ def purchase():
         return count
     else:
         history.append((input('Введите название покупки: '), purchase_sum))
-
         with open('purchase.txt', 'w') as f:
             f.write(str(history))
-
         count -= purchase_sum
         return count
 
@@ -79,8 +84,6 @@ while True:
     choice = input('Выберите пункт меню: ')
     if choice == '1':
         count = add_count()
-        #with open('count.txt', 'w') as f:
-
 
     elif choice == '2':
         count = purchase()
